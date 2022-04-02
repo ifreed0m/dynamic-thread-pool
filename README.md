@@ -20,7 +20,7 @@
 
 2.实现`com.dy.pool.RefreshAndMonitor#poolNames`方法自己解析`com.dy.pool.spring.DynamicThreadPoolScan#value`的value解析所有要读取的线程池参数配置。
 
-3.使用方式声明注解`@DynamicThreadPoolScan("value")`，声明在`@Configuration`标注的类或springboot的启动类上，（**value：对字符串格式没有任何要求，自己自定义字符串，在`com.dy.pool.RefreshAndMonitor#poolNames`中自己解析**）。使用bean注入的方式注入线程池对象。bean的名字就是配置中的poolName
+3.使用方式：声明注解`@DynamicThreadPoolScan("value")`，声明在`@Configuration`标注的类或springboot的启动类上，（**value：对字符串格式没有任何要求，自己自定义字符串，在`com.dy.pool.RefreshAndMonitor#poolNames`中自己解析**）。使用bean注入的方式注入线程池对象。bean的名字就是配置中的poolName
 
 4.支持的各项参数`com.dy.pool.ThreadPoolConf`
 
