@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 public class ThreadPoolDataIndicators {
 
     /**
-     * namespace-poolName拼接
+     * poolName唯一
      */
     private String poolName;
     /**
