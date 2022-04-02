@@ -46,23 +46,32 @@ public interface RefreshAndMonitor {
     }
 
     /**
-     * 只有线程池创建时会调用一次
+     * 每个线程池创建时会调用唯一的一次
      * 自己实现线程池各项参数的监控
-     * <p>
-     * 线程池活跃度计算公式为：线程池活跃度 = activeCount/maximumPoolSize。这个公式代表当活跃线程数趋向于maximumPoolSize的时候，代表线程负载趋高。
-     * 也可以从两方面来看线程池的过载判定条件，一个是发生了Reject异常，一个是队列中有等待任务（支持定制阈值）。
-     * executor::threadPoolLoad
-     * <p>
-     * 队列使用率 executor::queueLoad
-     * 当前线程数 executor::getPoolSize
-     * 正在积极执行任务的线程的大致数量 executor::getActiveCount
-     * 返回已完成执行的大致任务总数 executor::getCompletedTaskCount
-     * 曾经同时进入池中的最大线程数 executor::getLargestPoolSize
-     * 当前队列中任务的数量(队列已经使用的容量) executor.getQueue().size()
-     * 队列剩余的容量 executor.getQueue().remainingCapacity()
-     * 核心线程数 executor::getCorePoolSize
-     * 最大线程数 executor::getMaximumPoolSize
-     * 队列总容量 ((ChangeableBlockingQueue) executor.getQueue()).getCapacity()
+     *
+     * 例子：
+     * void metrics(DynamicThreadPoolExecutor executor){
+     *     new ScheduledThreadPoolExecutor(1, new DynamicThreadPoolExecutor.DefaultThreadFactory("metrics-Timer"))
+     *                 .scheduleAtFixedRate(
+     *                         () -> {
+     *                               线程池活跃度计算公式为：线程池活跃度 = activeCount/maximumPoolSize。这个公式代表当活跃线程数趋向于maximumPoolSize的时候，代表线程负载趋高。
+     *                               也可以从两方面来看线程池的过载判定条件，一个是发生了Reject异常，一个是队列中有等待任务（支持定制阈值）。
+     *                               executor::threadPoolLoad
+     *                               <p>
+     *                               队列使用率 executor::queueLoad
+     *                               当前线程数 executor::getPoolSize
+     *                               正在积极执行任务的线程的大致数量 executor::getActiveCount
+     *                               返回已完成执行的大致任务总数 executor::getCompletedTaskCount
+     *                               曾经同时进入池中的最大线程数 executor::getLargestPoolSize
+     *                               当前队列中任务的数量(队列已经使用的容量) executor.getQueue().size()
+     *                               队列剩余的容量 executor.getQueue().remainingCapacity()
+     *                               核心线程数 executor::getCorePoolSize
+     *                               最大线程数 executor::getMaximumPoolSize
+     *                               队列总容量 ((ChangeableBlockingQueue) executor.getQueue()).getCapacity()
+     *                         },
+     *                         59, 59, TimeUnit.SECONDS
+     *                 );
+     * }
      *
      * @param executor
      */
