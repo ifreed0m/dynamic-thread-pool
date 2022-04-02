@@ -58,11 +58,11 @@ public class DynamicThreadPoolFactory {
             return;
         }
         Runtime.getRuntime().addShutdownHook(new Thread(DynamicThreadPoolFactory::shutdownThreadPool, "Thread-shutdownAllThreadPool"));
-        // 隔10秒检测一次线程池状态
+        // 隔59秒检测一次线程池状态
         new ScheduledThreadPoolExecutor(1, new DynamicThreadPoolExecutor.DefaultThreadFactory("Monitor-ExecutorService-Timer"))
                 .scheduleAtFixedRate(
                         () -> CREATED_POOL.forEach((s, executor) -> Monitor.checkAlarm(executor)),
-                        5, 10, TimeUnit.SECONDS
+                        59, 59, TimeUnit.SECONDS
                 );
     }
 
