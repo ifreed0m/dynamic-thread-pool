@@ -16,7 +16,7 @@
 
 ###### 使用方式：
 
-1.基于Java Spi实现的拓展，使用时实现 `com.dy.pool.RefreshAndMonitor`接口。实现接口的方法。
+1.基于**Java Spi**实现的拓展，使用时实现 `com.dy.pool.RefreshAndMonitor`接口。实现接口的方法。
 
 2.实现`com.dy.pool.RefreshAndMonitor#poolNames`方法自己解析`com.dy.pool.spring.DynamicThreadPoolScan#value`的value解析所有要读取的线程池参数配置。
 
