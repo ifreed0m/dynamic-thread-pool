@@ -129,35 +129,4 @@ public class Monitor {
     }
 
 
-    static void doMonitor(DynamicThreadPoolExecutor executor) {
-       /* String poolId = executor.getPoolName();
-        // 线程池活跃度计算公式为：线程池活跃度 = activeCount/maximumPoolSize。这个公式代表当活跃线程数趋向于maximumPoolSize的时候，代表线程负载趋高。
-        // 也可以从两方面来看线程池的过载判定条件，一个是发生了Reject异常，一个是队列中有等待任务（支持定制阈值）。
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, executor::threadPoolLoad).tag("name", poolId).tag("type", "threadPoolLoad").get();
-        // 队列使用率
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, executor::queueLoad).tag("name", poolId).tag("type", "queueLoad").get();
-        // 当前线程数
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, executor::getPoolSize).tag("name", poolId).tag("type", "poolSize").get();
-        // 正在积极执行任务的线程的大致数量
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, executor::getActiveCount).tag("name", poolId).tag("type", "activeCount").get();
-        // 返回已完成执行的大致任务总数
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, executor::getCompletedTaskCount).tag("name", poolId).tag("type", "completedTaskCount").get();
-        // 曾经同时进入池中的最大线程数
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, executor::getLargestPoolSize).tag("name", poolId).tag("type", "largestPoolSize").get();
-        // 当前队列中任务的数量(队列已经使用的容量)
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, () -> executor.getQueue().size()).tag("name", poolId).tag("type", "queueTaskSize").get();
-        // 队列剩余的容量
-        Metrics.gauge(THREAD_POOL_MONITOR_QUOTA, () -> executor.getQueue().remainingCapacity()).tag("name", poolId).tag("type", "queueRemainingCapacity").get();
-
-
-        // 核心线程数
-        Metrics.gauge(THREAD_POOL_MONITOR_PARAM, executor::getCorePoolSize).tag("name", poolId).tag("type", "corePoolSize").get();
-        // 最大线程数
-        Metrics.gauge(THREAD_POOL_MONITOR_PARAM, executor::getMaximumPoolSize).tag("name", poolId).tag("type", "maximumPoolSize").get();
-        // 队列总容量
-        Metrics.gauge(THREAD_POOL_MONITOR_PARAM, () -> ((ChangeableBlockingQueue) executor.getQueue()).getCapacity()).tag("name", poolId).tag("type", "queueCapacity").get();
-    */
-    }
-
-
 }
