@@ -15,6 +15,9 @@ public interface RefreshAndMonitor {
     int ALARM_SOURCE_THREAD_POOL_LOAD = 5;
 
     /**
+     * 实现此方法，解析注解com.dy.pool.spring.DynamicThreadPoolScan#value()自定义的字符串，
+     * 需要解析出所有要创建的线程池的name，并且在此方法内实现线程池配置的监听，在监听器中调用refresh(poolConfig)
+     * 以实现动态修改配置
      * @param value com.dy.pool.spring.DynamicThreadPoolScan#value()
      * @return
      */
