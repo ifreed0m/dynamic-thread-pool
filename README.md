@@ -1,6 +1,6 @@
 # simple-dynamic-thread-pool。简洁的动态线程池实现
 
-**只提供最基础的动态线程池的拓展接口的暴露。配置的读取、刷新，告警方式，监控方式等功能，使用者通过暴露的接口`com.dy.pool.RefreshAndMonitor`自己实现，。**
+**只提供最基础的动态线程池的拓展接口的暴露。使用者通过暴露的接口`com.dy.pool.RefreshAndMonitor`（基于Java的SPI机制）自己实现，配置的读取、刷新，告警方式，监控方式等功能。**
 
 ###### 特点：
 
